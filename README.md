@@ -1,17 +1,21 @@
 # claude_databricks_proxy
 
+
 ## Running the proxy
 ```bash
-// Normal mode: Concise, actionable logging
-node main.js
+# Clone this repo then run one of the following
 
-// Verbose mode: Full request/response inspection
-VERBOSE=true node main.js
+# Normal mode: Concise, actionable logging
+HOSTNAME=xxx.cloud.databricks.com node main.js
+
+# Verbose mode: Full request/response inspection
+VERBOSE=true HOSTNAME=xxx.cloud.databricks.com node main.js
 ```
 
 ## Configuration
 To use the proxy, VS Code only needs three environment variables:
 
+```json
 {
   "env": {
     "ANTHROPIC_BASE_URL": "http://localhost:3000/serving-endpoints/anthropic",
@@ -19,4 +23,6 @@ To use the proxy, VS Code only needs three environment variables:
     "ANTHROPIC_MODEL": "databricks-claude-sonnet-4-5"
   }
 }
+```
+
 The extension believes it's talking to Anthropic's API, while the proxy silently handles the translation layer.
